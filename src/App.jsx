@@ -5,7 +5,7 @@ import DateForm from './DateForm';
 import MedicalFacilityForm from './MedicalFacilityForm';
 import SpecialistForm from './SpecialistForm';
 
-const BookingForm = () => {
+const App = () => {
 	const FormTitles = ['Wybierz placówkę', 'Wybierz typ wizyty', 'Wybierz termin wizyty', 'Uzupełnij dane'];
 	const [page, setPage] = useState(0);
 	const [formData, setFormData] = useState({});
@@ -77,4 +77,4 @@ const BookingForm = () => {
 	);
 };
 
-export default BookingForm;
+export default App;
