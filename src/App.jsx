@@ -9,6 +9,7 @@ const App = () => {
 	const FormTitles = ['Wybierz placówkę', 'Wybierz typ wizyty', 'Wybierz termin wizyty', 'Uzupełnij dane'];
 	const [page, setPage] = useState(0);
 	const [formData, setFormData] = useState({});
+	console.log(formData, 'głowny');
 
 	const handleInputChange = e => {
 		setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -33,6 +34,7 @@ const App = () => {
 					page={page}
 					prevPage={prevPage}
 					nextPage={nextPage}
+					formData={formData}
 				/>
 			);
 		} else if (page === 2) {
@@ -43,6 +45,7 @@ const App = () => {
 					page={page}
 					prevPage={prevPage}
 					nextPage={nextPage}
+					formData={formData}
 				/>
 			);
 		} else if (page === 3) {

@@ -1,4 +1,7 @@
-const MedicalFacilityForm = ({ handleInputChange, nextPage, prevPage, FormTitles, page }) => {
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+const MedicalFacilityForm = ({ handleInputChange, nextPage, prevPage, page }) => {
 	const medicalFacilities = [
 		{ id: 1, name: 'Przychodnia A' },
 		{ id: 2, name: 'Przychodnia B' },
@@ -8,7 +11,18 @@ const MedicalFacilityForm = ({ handleInputChange, nextPage, prevPage, FormTitles
 	return (
 		<div className='w-auto h-auto flex justify-center items-center px-[10%] md:px-[15%]'>
 			<div className='flex flex-col items-center border-2 border-gray-200 px-4 py-4 rounded-xl'>
-				<h2 className='text-lg font-bold mb-4'>Wybierz placówkę medyczną</h2>
+				<div className='flex w-full mb-6 flex-wrap justify-start items-center'>
+					<button
+						className='rounded-full text-black mr-4 disabled:opacity-30'
+						disabled={page === 0}
+						onClick={() => {
+							prevPage();
+						}}>
+						<FontAwesomeIcon icon={faArrowLeft} />
+					</button>
+					<h2 className=' text-lg font-bold align-self-center'>Wybierz placówkę medyczną</h2>
+				</div>
+
 				<div className='flex flex-col'>
 					<div className='flex md:flex-nowrap flex-wrap justify-center'>
 						{medicalFacilities.map(facility => (
@@ -24,23 +38,7 @@ const MedicalFacilityForm = ({ handleInputChange, nextPage, prevPage, FormTitles
 							</div>
 						))}
 					</div>
-					<div className='flex p-4 w-full justify-center'>
-						<button
-							className='p-2 bg-gray-700 rounded-lg text-white mr-4 disabled:opacity-60'
-							disabled={page === 0}
-							onClick={() => {
-								prevPage();
-							}}>
-							Cofnij
-						</button>
-						<button
-							className='p-2 bg-gray-700 rounded-lg text-white '
-							onClick={() => {
-								nextPage();
-							}}>
-							{page === FormTitles.length - 1 ? 'Umów' : 'Dalej'}
-						</button>
-					</div>
+					<div className='flex p-4 w-full justify-center'></div>
 				</div>
 			</div>
 		</div>
