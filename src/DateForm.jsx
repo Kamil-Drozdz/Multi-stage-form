@@ -45,10 +45,10 @@ const DateForm = ({ handleInputChange, nextPage, prevPage, page }) => {
 	};
 
 	return (
-		<div className='w-auto h-auto flex justify-center items-center px-[10%] md:px-[20%]'>
-			<div className='flex flex-col items-center border-2 border-gray-200 px-4 py-4 rounded-xl'>
+		<div className='h-auto w-screen  flex justify-center items-center px-[10%] md:px-[20%]'>
+			<div className='w-full md:w-auto flex flex-col items-center border-2 border-gray-200 px-4 py-4 rounded-xl'>
 				<h2 className='text-xl mb-4 border-b-[1px] pb-4 w-full font-bold'>Dostępne sesje</h2>
-				<div className='flex mb-4'>
+				<div className='w-full flex mb-4 overflow-x-scroll md:overflow-x-auto'>
 					{AVAILABLE_DATES.map((date, index) => (
 						<button
 							key={index}
