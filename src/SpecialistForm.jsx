@@ -84,9 +84,9 @@ const SpecialistForm = ({ handleInputChange, nextPage, prevPage, formData }) => 
 	return (
 		<div className='w-auto h-auto flex justify-center items-center px-[10%] md:px-[15%]'>
 			<div className='flex flex-col items-center border-2 border-gray-200 px-6 py-4 rounded-xl'>
-				<div className='flex w-full mb-6 flex-wrap border-b-[1px] pb-6'>
+				<div className='flex w-full mb-6 flex-nowrap border-b-[1px] pb-6'>
 					<button
-						className='rounded-full text-black mr-4 disabled:opacity-60'
+						className='py-[4px] px-2 hover:bg-slate-300 rounded-full text-black mr-4 disabled:opacity-60'
 						onClick={() => {
 							prevPage();
 						}}>
@@ -110,7 +110,9 @@ const SpecialistForm = ({ handleInputChange, nextPage, prevPage, formData }) => 
 										setSelectedSpecialty(event.target.value);
 										handleInputChange({ target: { name: 'specialty', value: event.target.value } });
 									}}
-									className='border-2 border-gray-300 rounded-md px-2 py-2 font-bold text-xl mr-2 mb-2 w-full basis-1/3 grow'
+									className={`hover:bg-slate-100 border-2 active:bg-slate-300 border-gray-300 rounded-md px-2 py-2 font-bold text-xl mr-2 mb-2 w-full basis-1/3 grow  ${
+										specialty === selectedSpecialty ? 'border-gray-700 border-2' : ''
+									}`}
 									type='button'>
 									{specialty}
 								</button>
@@ -121,7 +123,7 @@ const SpecialistForm = ({ handleInputChange, nextPage, prevPage, formData }) => 
 						{filteredSpecialists.map(specialist => (
 							<div
 								key={specialist.id}
-								className='w-full  border-[1px] flex justify-center mx-2 items-center text-xs md:text-sm bg-white rounded-md p-4 shadow-md cursor-pointer hover:shadow-lg'
+								className='w-full   hover:border-slate-700 border-[1px] flex justify-center mx-2 items-center text-xs md:text-sm bg-white rounded-md p-4 shadow-md cursor-pointer hover:shadow-lg'
 								onClick={() => {
 									handleInputChange({ target: { name: 'specialist', value: specialist.name } });
 									nextPage();
