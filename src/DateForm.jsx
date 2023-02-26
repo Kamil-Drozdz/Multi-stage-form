@@ -2,31 +2,15 @@ import { useState, useEffect } from 'react';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const AVAILABLE_DATES = [
-	{
-		date: '25 Lut',
-		slots: ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'],
-	},
-	{
-		date: '4 Mar',
-		slots: ['8:00', '9:00', '16:00', '17:00', '18:00', '19:00'],
-	},
-	{
-		date: '11 Mar',
-		slots: ['8:00'],
-	},
-	{
-		date: '18 Mar',
-		slots: ['8:00', '9:00'],
-	},
-	{
-		date: '25 Mar',
-		slots: ['8:00', '9:00', '10:00', '11:00', '12:00'],
-	},
-];
-
-const DateForm = ({ handleInputChange, nextPage, prevPage, formData }) => {
-	const [selectedDateIndex, setSelectedDateIndex] = useState(0);
+const DateForm = ({
+	handleInputChange,
+	nextPage,
+	prevPage,
+	formData,
+	AVAILABLE_DATES,
+	selectedDateIndex,
+	setSelectedDateIndex,
+}) => {
 	const [selectedSlotIndex, setSelectedSlotIndex] = useState(0);
 
 	const handleDateChange = index => {
@@ -37,6 +21,10 @@ const DateForm = ({ handleInputChange, nextPage, prevPage, formData }) => {
 	const handleSlotChange = index => {
 		setSelectedSlotIndex(index);
 		handleInputChange({ target: { name: 'time', value: AVAILABLE_DATES[selectedDateIndex].slots[index] } });
+	};
+	const isDateActive = date => {
+		const availableDate = AVAILABLE_DATES.find(d => d.date === date);
+		return availableDate && availableDate.slots.length > 0;
 	};
 
 	const handleBooking = () => {
@@ -56,7 +44,7 @@ const DateForm = ({ handleInputChange, nextPage, prevPage, formData }) => {
 
 	return (
 		<div className='h-auto w-screen  flex justify-center items-center px-[10%] md:px-[20%]'>
-			<div className='w-full md:w-auto flex flex-col items-center border-2 border-gray-200 px-4 py-4 rounded-xl'>
+			<div className=' md:max-w-[600px] w-full md:w-auto flex flex-col items-center border-2 border-gray-200 px-4 py-4 rounded-xl '>
 				<div className='flex w-full mb-6 flex-nowrap border-b-[1px] pb-6'>
 					<button
 						className='py-[4px] px-2 hover:bg-slate-300 rounded-full text-black mr-4 disabled:opacity-30'
@@ -67,13 +55,13 @@ const DateForm = ({ handleInputChange, nextPage, prevPage, formData }) => {
 					</button>
 					<h2 className=' flex text-xl font-bold w-[90%] justify-center'>Dostępne sesje</h2>
 				</div>
-				<div className='w-full flex mb-4 overflow-x-scroll md:overflow-x-auto'>
+				<div className='w-full flex mb-4 overflow-x-scroll md:overflow-x-auto md:flex-wrap'>
 					{AVAILABLE_DATES.map((date, index) => (
 						<button
 							key={index}
-							className={`py-2 px-4 border mr-2 basis-1/1 grow rounded font-bold ${
+							className={`w-full py-2 mb-2 px-2 basis-[18%] border mr-2 rounded font-bold ${
 								index === selectedDateIndex ? 'border-black text-black' : ''
-							}`}
+							} ${!isDateActive(date.date) ? ' opacity-40' : ''}`}
 							onClick={() => handleDateChange(index)}>
 							<p className='text-[10px] font-bold text-gray-400'>Sob</p>
 							{date.date}
@@ -93,8 +81,14 @@ const DateForm = ({ handleInputChange, nextPage, prevPage, formData }) => {
 							{slot}
 						</button>
 					))}
+					{!isDateActive(AVAILABLE_DATES[selectedDateIndex].date) && (
+						<p className=' text-sm mb-2'> w tym dniu nie mamy dostępnych już miejsc</p>
+					)}
 				</div>
-				<button className='py-2 px-4 bg-teal-800 text-white rounded w-full font-bold' onClick={handleBooking}>
+				<button
+					className='py-2 px-4 bg-teal-800 text-white rounded w-full font-bold disabled:opacity-30'
+					disabled={!isDateActive(AVAILABLE_DATES[selectedDateIndex].date) || selectedSlotIndex === -1}
+					onClick={handleBooking}>
 					Zarezerwuj sesję dla {AVAILABLE_DATES[selectedDateIndex].date} 2023
 				</button>
 			</div>

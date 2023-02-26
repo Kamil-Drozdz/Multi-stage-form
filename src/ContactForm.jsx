@@ -37,13 +37,15 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 
 					<div className='relative z-0 w-full mb-6 group'>
 						<input
-							type='number'
+							type='text'
 							name='floating_name_surname'
 							id='floating_name_surname'
 							className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2  focus:outline-none focus:ring-0  peer'
 							placeholder=' '
 							onChange={e => handleInputChange({ target: { name: 'number', value: e.target.value } })}
 							required
+                            pattern="\d*"
+							maxLength={9}
 							value={formData?.number}
 						/>
 						{formData?.number?.length > 8 || <p className='text-red-500 w-full text-sm'>{errors.number}</p>}

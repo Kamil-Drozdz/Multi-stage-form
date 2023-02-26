@@ -4,6 +4,7 @@ import ContactForm from './ContactForm';
 import DateForm from './DateForm';
 import MedicalFacilityForm from './MedicalFacilityForm';
 import SpecialistForm from './SpecialistForm';
+import { AVAILABLE_DATES } from './mockData';
 
 const App = () => {
 	const FormTitles = ['Wybierz placówkę', 'Wybierz typ wizyty', 'Wybierz termin wizyty', 'Uzupełnij dane'];
@@ -14,10 +15,9 @@ const App = () => {
 		email: '',
 		specialist: '',
 		specialty: '',
-		facility: '',
 		consent: false,
 	});
-
+	const [selectedDateIndex, setSelectedDateIndex] = useState(0);
 	const [errors, setErrors] = useState({});
 
 	const handleInputChange = e => {
@@ -55,6 +55,9 @@ const App = () => {
 					prevPage={prevPage}
 					nextPage={nextPage}
 					formData={formData}
+					AVAILABLE_DATES={AVAILABLE_DATES}
+					selectedDateIndex={selectedDateIndex}
+					setSelectedDateIndex={setSelectedDateIndex}
 				/>
 			);
 		} else if (page === 3) {
@@ -73,7 +76,7 @@ const App = () => {
 	const prevPage = () => {
 		setPage(currPage => currPage - 1);
 	};
-	const nextPage = () => {
+	const nextPage = index => {
 		if (page === FormTitles.length - 1) {
 			if (!formData.fullName) {
 				setErrors({ ...errors, fullName: 'Imię i nazwisko jest wymagane' });
@@ -92,7 +95,12 @@ const App = () => {
 				errors.consent = 'zgoda musi zostać zaakceptowana';
 				return;
 			}
-			alert('Otrzymujemy obiekt, sprawdz konsolę deva');
+			alert(
+				'Otrzymujemy obiekt, sprawdz konsolę deva godzina która jest wybrana została usunięta z tablicy (skopiowanej)'
+			);
+			const dateSlots = AVAILABLE_DATES[selectedDateIndex].slots;
+			const removedSlot = dateSlots.splice(index, 1)[0];
+			AVAILABLE_DATES[selectedDateIndex].slots = dateSlots;
 			console.log(formData);
 		} else {
 			setPage(currPage => currPage + 1);
