@@ -82,11 +82,11 @@ const DateForm = ({ handleInputChange, nextPage, prevPage, formData }) => {
 					))}
 				</div>
 				<h2 className='text-lg mb-4 border-b-[1px] pb-4 w-full'>Dostępne sloty czasowe</h2>
-				<div className='flex mb-2 px-auto w-full justify-between flex-wrap'>
-					{AVAILABLE_DATES[selectedDateIndex]?.slots?.map((slot, index) => (
+				<div className='flex mb-2 px-auto w-full flex-wrap'>
+					{AVAILABLE_DATES[selectedDateIndex].slots.map((slot, index) => (
 						<button
 							key={index}
-							className={`py-2 border rounded font-bold basis-1/4 grow ${
+							className={`py-2 border rounded font-bold basis-1/4 ${
 								index === selectedSlotIndex ? 'border-black text-black' : ''
 							}`}
 							onClick={() => handleSlotChange(index)}>
@@ -95,7 +95,7 @@ const DateForm = ({ handleInputChange, nextPage, prevPage, formData }) => {
 					))}
 				</div>
 				<button className='py-2 px-4 bg-teal-800 text-white rounded w-full font-bold' onClick={handleBooking}>
-					Zarezerwuj sesję dla {AVAILABLE_DATES[selectedDateIndex]?.date} 2023
+					Zarezerwuj sesję dla {AVAILABLE_DATES[selectedDateIndex].date} 2023
 				</button>
 			</div>
 		</div>
