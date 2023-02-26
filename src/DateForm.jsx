@@ -9,19 +9,19 @@ const AVAILABLE_DATES = [
 	},
 	{
 		date: '4 Mar',
-		slots: ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'],
+		slots: ['8:00', '9:00', '16:00', '17:00', '18:00', '19:00'],
 	},
 	{
 		date: '11 Mar',
-		slots: ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'],
+		slots: ['8:00'],
 	},
 	{
 		date: '18 Mar',
-		slots: ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'],
+		slots: ['8:00', '9:00'],
 	},
 	{
 		date: '25 Mar',
-		slots: ['8:00', '9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00', '18:00', '19:00'],
+		slots: ['8:00', '9:00', '10:00', '11:00', '12:00'],
 	},
 ];
 
@@ -83,7 +83,7 @@ const DateForm = ({ handleInputChange, nextPage, prevPage, formData }) => {
 				</div>
 				<h2 className='text-lg mb-4 border-b-[1px] pb-4 w-full'>Dostępne sloty czasowe</h2>
 				<div className='flex mb-2 px-auto w-full justify-between flex-wrap'>
-					{AVAILABLE_DATES[selectedDateIndex].slots.map((slot, index) => (
+					{AVAILABLE_DATES[selectedDateIndex]?.slots?.map((slot, index) => (
 						<button
 							key={index}
 							className={`py-2 border rounded font-bold basis-1/4 grow ${
@@ -95,7 +95,7 @@ const DateForm = ({ handleInputChange, nextPage, prevPage, formData }) => {
 					))}
 				</div>
 				<button className='py-2 px-4 bg-teal-800 text-white rounded w-full font-bold' onClick={handleBooking}>
-					Zarezerwuj sesję dla {AVAILABLE_DATES[selectedDateIndex].date} 2023
+					Zarezerwuj sesję dla {AVAILABLE_DATES[selectedDateIndex]?.date} 2023
 				</button>
 			</div>
 		</div>

@@ -1,6 +1,5 @@
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
 
 const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }) => {
 	return (
@@ -25,6 +24,7 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 							className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2  focus:outline-none focus:ring-0  peer'
 							placeholder=' '
 							onChange={e => handleInputChange({ target: { name: 'fullName', value: e.target.value } })}
+							value={formData?.fullName}
 							required
 						/>
 						{!!formData?.fullName?.length || <p className='text-red-500 w-full text-sm'>{errors.fullName}</p>}
@@ -44,6 +44,7 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 							placeholder=' '
 							onChange={e => handleInputChange({ target: { name: 'number', value: e.target.value } })}
 							required
+							value={formData?.number}
 						/>
 						{formData?.number?.length > 8 || <p className='text-red-500 w-full text-sm'>{errors.number}</p>}
 						<label
@@ -61,6 +62,7 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 							placeholder=' '
 							onChange={e => handleInputChange({ target: { name: 'email', value: e.target.value } })}
 							required
+							value={formData?.email}
 						/>
 						{!!formData?.email?.length || <p className='text-red-500 w-full text-sm'>{errors.email}</p>}
 						<label
@@ -73,7 +75,8 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 						<input
 							type='checkbox'
 							name='consent'
-							onClick={e => handleInputChange({ target: { name: 'consent', value: e.target.checked } })}
+							checked={formData?.consent}
+							onChange={e => handleInputChange({ target: { name: 'consent', value: e.target.checked } })}
 						/>
 						Zaznaczenie zgody jest dobrowolne,ale konieczne do zapisu na wizytę przez internet. Zaznaczając ten przycisk
 						akceptujesz politykę prywatności, która jest dostępna na stronie rehabilitacja.waw.pl

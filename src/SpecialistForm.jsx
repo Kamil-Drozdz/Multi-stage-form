@@ -62,6 +62,94 @@ const SpecialistForm = ({ handleInputChange, nextPage, prevPage, formData }) => 
 			facilities: 'Przychodnia C',
 			image: doctor,
 		},
+		{
+			id: 8,
+			name: 'Rysiek Pietruszka',
+			title: 'fizjoterapeuta',
+			speciality: 'osteopatia',
+			facilities: 'Przychodnia B',
+			image: doctor,
+		},
+		{
+			id: 9,
+			name: 'Wacław Chrząkała',
+			title: 'fizjoterapeuta',
+			speciality: 'fizjoterapia',
+			facilities: 'Przychodnia C',
+			image: doctor,
+		},
+		{
+			id: 10,
+			name: 'Rysiek Pietruszka',
+			title: 'fizjoterapeuta',
+			speciality: 'osteopatia',
+			facilities: 'Przychodnia B',
+			image: doctor,
+		},
+		{
+			id: 11,
+			name: 'Wacław Chrząkała',
+			title: 'fizjoterapeuta',
+			speciality: 'fizjoterapia',
+			facilities: 'Przychodnia C',
+			image: doctor,
+		},
+		{
+			id: 12,
+			name: 'Wacław Chrząkała',
+			title: 'fizjoterapeuta',
+			speciality: 'fizjoterapia',
+			facilities: 'Przychodnia A',
+			image: doctor,
+		},
+		{
+			id: 13,
+			name: 'Rysiek Pietruszka',
+			title: 'fizjoterapeuta',
+			speciality: 'osteopatia',
+			facilities: 'Przychodnia A',
+			image: doctor,
+		},
+		{
+			id: 14,
+			name: 'Wacław Chrząkała',
+			title: 'fizjoterapeuta',
+			speciality: 'fizjoterapia',
+			facilities: 'Przychodnia A',
+			image: doctor,
+		},
+		{
+			id: 15,
+			name: 'Rysiek Pietruszka',
+			title: 'fizjoterapeuta',
+			speciality: 'osteopatia',
+			facilities: 'Przychodnia A',
+			image: doctor,
+		},
+		{
+			id: 16,
+			name: 'Wacław Chrząkała',
+			title: 'fizjoterapeuta',
+			speciality: 'fizjoterapia',
+			facilities: 'Przychodnia A',
+			image: doctor,
+		},
+		{
+			id: 17,
+			name: 'Rysiek Pietruszka',
+			title: 'fizjoterapeuta',
+			speciality: 'osteopatia',
+			facilities: 'Przychodnia A',
+			image: doctor,
+		},
+		{
+			id: 15,
+			name: 'Wacław Chrząkała',
+			title: 'fizjoterapeuta',
+			speciality: 'fizjoterapia',
+			facilities: 'Przychodnia A',
+			image: doctor,
+		},
 	];
 
 	const [selectedSpecialty, setSelectedSpecialty] = useState(specialties[0]);
@@ -119,18 +207,18 @@ const SpecialistForm = ({ handleInputChange, nextPage, prevPage, formData }) => 
 							))}
 						</div>
 					</div>
-					<div className='flex justify-center flex-wrap md:flex-nowrap '>
+					<div className='flex justify-center flex-wrap md:flex-nowrap'>
 						{filteredSpecialists.map(specialist => (
 							<div
 								key={specialist.id}
-								className='w-full   hover:border-slate-700 border-[1px] flex justify-center mx-2 items-center text-xs md:text-sm bg-white rounded-md p-4 shadow-md cursor-pointer hover:shadow-lg'
+								className='w-full hover:border-slate-700 border-[1px] flex justify-center mx-2 items-center text-xs md:text-sm bg-white rounded-md p-4 shadow-md cursor-pointer hover:shadow-lg'
 								onClick={() => {
 									handleInputChange({ target: { name: 'specialist', value: specialist.name } });
 									nextPage();
 								}}>
 								<div className='flex flex-col'>
 									<img className='max-w-[100px] object-cover ' src={specialist.image} />
-									<p className=' text-xs md:text-lg font-bold px-2  '>
+									<p className=' text-xs md:text-lg font-bold px-2'>
 										{specialist.name} {specialist.surname}
 									</p>
 								</div>

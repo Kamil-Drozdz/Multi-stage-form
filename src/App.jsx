@@ -8,7 +8,16 @@ import SpecialistForm from './SpecialistForm';
 const App = () => {
 	const FormTitles = ['Wybierz placówkę', 'Wybierz typ wizyty', 'Wybierz termin wizyty', 'Uzupełnij dane'];
 	const [page, setPage] = useState(0);
-	const [formData, setFormData] = useState({});
+	const [formData, setFormData] = useState({
+		fullName: '',
+		number: '',
+		email: '',
+		specialist: '',
+		specialty: '',
+		facility: '',
+		consent: false,
+	});
+
 	const [errors, setErrors] = useState({});
 
 	const handleInputChange = e => {
@@ -83,8 +92,7 @@ const App = () => {
 				errors.consent = 'zgoda musi zostać zaakceptowana';
 				return;
 			}
-
-			alert('Otrzymujemy obiekt, sprawdz konsolę deva', JSON.stringify(formData));
+			alert('Otrzymujemy obiekt, sprawdz konsolę deva');
 			console.log(formData);
 		} else {
 			setPage(currPage => currPage + 1);
