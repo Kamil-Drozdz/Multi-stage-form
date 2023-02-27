@@ -2,6 +2,7 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }) => {
+	console.log(formData.number.length > 11);
 	return (
 		<div className='w-auto h-auto flex justify-center items-center px-[10%] md:px-[30%]'>
 			<div className='flex flex-col items-center border-2 border-gray-200 px-4 py-4 rounded-xl '>
@@ -48,7 +49,7 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 							maxLength={12}
 							value={formData?.number}
 						/>
-						{formData?.number?.length > 8 || <p className='text-red-500 w-full text-sm'>{errors.number}</p>}
+						{formData?.number?.length > 11 || <p className='text-red-500 w-full text-sm'>{errors.number}</p>}
 						<label
 							htmlFor='floating_name_surname'
 							className='peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>

@@ -82,7 +82,7 @@ const App = () => {
 				setErrors({ ...errors, fullName: 'Imię i nazwisko jest wymagane' });
 				return;
 			}
-			if (!/^\+48\d{9}$/.test(formData.number)) {
+			if (!/^(\+48)[1-9]\d{8}$/.test(formData.number)) {
 				errors.number = 'Numer telefonu musi składać się z 9 cyfr';
 				return;
 			}
