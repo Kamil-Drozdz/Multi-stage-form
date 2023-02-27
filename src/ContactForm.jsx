@@ -44,8 +44,8 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 							placeholder=' '
 							onChange={e => handleInputChange({ target: { name: 'number', value: e.target.value } })}
 							required
-                            pattern="\d*"
-							maxLength={9}
+							pattern='\d*'
+							maxLength={12}
 							value={formData?.number}
 						/>
 						{formData?.number?.length > 8 || <p className='text-red-500 w-full text-sm'>{errors.number}</p>}
