@@ -11,7 +11,7 @@ const App = () => {
 	const [page, setPage] = useState(0);
 	const [formData, setFormData] = useState({
 		fullName: '',
-		number: '',
+		number: '+48',
 		email: '',
 		specialist: '',
 		specialty: '',
@@ -82,7 +82,7 @@ const App = () => {
 				setErrors({ ...errors, fullName: 'Imię i nazwisko jest wymagane' });
 				return;
 			}
-			if (!/^\d{9}$/.test(formData.number)) {
+			if (!/^\+48\d{9}$/.test(formData.number)) {
 				errors.number = 'Numer telefonu musi składać się z 9 cyfr';
 				return;
 			}
