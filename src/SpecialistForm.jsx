@@ -24,7 +24,7 @@ const SpecialistForm = ({ handleInputChange, nextPage, prevPage, formData }) => 
 	}, [formData?.medicalFacility]);
 
 	return (
-		<div className='w-auto h-auto flex justify-center items-center px-[10%] md:px-[15%]'>
+		<div className='w-auto max-w-[600px] mt-[20%] md:mt-0 h-full flex justify-center items-center px-[5%] md:px-[15%]'>
 			<div className='flex flex-col items-center border-2 border-gray-200 px-6 py-4 rounded-xl'>
 				<div className='flex w-full mb-6 flex-nowrap border-b-[1px] pb-6'>
 					<button
@@ -61,11 +61,11 @@ const SpecialistForm = ({ handleInputChange, nextPage, prevPage, formData }) => 
 							))}
 						</div>
 					</div>
-					<div className='flex mb-2 px-auto w-full flex-wrap'>
+					<div className='flex w-full mb-2 flex-wrap justify-items-stretch mx-auto '>
 						{filteredSpecialists.map(specialist => (
 							<div
 								key={specialist.id}
-								className='w-full basis-1/3 md:basis-[30%] mb-2 hover:border-slate-700 border-[1px] flex justify-center mr-2 md:mx-2 items-center text-xs md:text-sm bg-white rounded-md p-1 md:p-2 shadow-md cursor-pointer hover:shadow-lg'
+								className='w-full basis-[41%]  mb-2 hover:border-slate-700 border-[1px] flex justify-center mr-2 md:mx-2 items-center text-xs md:text-sm bg-white rounded-md p-1 md:p-2 shadow-md cursor-pointer hover:shadow-lg'
 								onClick={() => {
 									handleInputChange({ target: { name: 'specialist', value: specialist.name } });
 									nextPage();

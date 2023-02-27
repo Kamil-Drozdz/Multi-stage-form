@@ -55,7 +55,7 @@ const DateForm = ({
 					</button>
 					<h2 className=' flex text-xl font-bold w-[90%] justify-center'>Dostępne sesje</h2>
 				</div>
-				<div className='w-full flex mb-4 overflow-x-scroll md:overflow-x-auto md:flex-wrap'>
+				<div className='w-full flex mb-4 overflow-x-scroll  scrollbar'>
 					{AVAILABLE_DATES.map((date, index) => (
 						<button
 							key={index}
