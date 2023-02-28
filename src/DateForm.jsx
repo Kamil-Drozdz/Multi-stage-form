@@ -44,7 +44,7 @@ const DateForm = ({
 
 	return (
 		<div className='h-auto w-screen  flex justify-center items-center px-[10%] md:px-[20%]'>
-			<div className=' md:max-w-[600px] w-full md:w-auto flex flex-col items-center border-2 border-gray-200 px-4 py-4 rounded-xl '>
+			<div className=' md:max-w-[400px] w-full md:w-auto flex flex-col items-center border-2 border-gray-200 px-4 py-4 rounded-xl '>
 				<div className='flex w-full mb-6 flex-nowrap border-b-[1px] pb-6'>
 					<button
 						className='py-[4px] px-2 hover:bg-slate-300 rounded-full text-black mr-4 disabled:opacity-30'
