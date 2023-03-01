@@ -17,11 +17,38 @@ const App = () => {
 		specialty: '',
 		consent: false,
 	});
+
 	const [selectedDateIndex, setSelectedDateIndex] = useState(0);
-	const [errors, setErrors] = useState({});
+	const [errors, setErrors] = useState({
+		fullName: '',
+		number: '',
+		email: '',
+	});
 
 	const handleInputChange = e => {
-		setFormData({ ...formData, [e.target.name]: e.target.value });
+		const { name, value } = e.target;
+		setFormData({ ...formData, [name]: value });
+
+		if (name === 'fullName' && value.length < 4) {
+			setErrors({ ...errors, fullName: 'Uzupełnij imię i nazwisko' });
+		} else {
+			setErrors(prevErrors => ({ ...prevErrors, fullName: '' }));
+		}
+		if (name === 'number' && !/^(\+48)[1-9]\d{8}$/.test(value)) {
+			setErrors({ ...errors, number: 'Numer telefonu musi składać się z 9 cyfr' });
+		} else {
+			setErrors(prevErrors => ({ ...prevErrors, number: '' }));
+		}
+
+		if (name === 'email' && !/\S+@\S+\.\S+/.test(value)) {
+			setErrors({ ...errors, email: 'Niepoprawny adres e-mail' });
+		} else {
+			setErrors(prevErrors => ({ ...prevErrors, email: '' }));
+		}
+
+		if (!formData.consent) {
+			setErrors(prevErrors => ({ ...prevErrors, consent: value ? '' : 'Zgoda musi zostać zaakceptowana' }));
+		}
 	};
 
 	const PageDisplay = () => {
@@ -78,30 +105,18 @@ const App = () => {
 	};
 	const nextPage = index => {
 		if (page === FormTitles.length - 1) {
-			if (!formData.fullName) {
-				setErrors({ ...errors, fullName: 'Imię i nazwisko jest wymagane' });
-				return;
+			if ((!errors.fullName, !errors.email, !errors.number, !!formData.consent)) {
+				setErrors({});
 			}
-			if (!/^(\+48)[1-9]\d{8}$/.test(formData.number)) {
-				errors.number = 'Numer telefonu musi składać się z 9 cyfr';
-				return;
+			if (Object.keys(errors).length === 0) {
+				alert(
+					'Otrzymujemy obiekt, sprawdz konsolę deva godzina która jest wybrana została usunięta z tablicy (skopiowanej)'
+				);
+				const dateSlots = AVAILABLE_DATES[selectedDateIndex].slots;
+				const removedSlot = dateSlots.splice(index, 1)[0];
+				AVAILABLE_DATES[selectedDateIndex].slots = dateSlots;
+				console.log(formData);
 			}
-
-			if (!/\S+@\S+\.\S+/.test(formData.email)) {
-				errors.email = 'Niepoprawny adres e-mail';
-				return;
-			}
-			if (!formData.consent) {
-				errors.consent = 'zgoda musi zostać zaakceptowana';
-				return;
-			}
-			alert(
-				'Otrzymujemy obiekt, sprawdz konsolę deva godzina która jest wybrana została usunięta z tablicy (skopiowanej)'
-			);
-			const dateSlots = AVAILABLE_DATES[selectedDateIndex].slots;
-			const removedSlot = dateSlots.splice(index, 1)[0];
-			AVAILABLE_DATES[selectedDateIndex].slots = dateSlots;
-			console.log(formData);
 		} else {
 			setPage(currPage => currPage + 1);
 		}

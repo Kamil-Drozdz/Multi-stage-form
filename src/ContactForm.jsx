@@ -2,7 +2,6 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }) => {
-	console.log(formData.number.length > 11);
 	return (
 		<div className='w-auto h-auto flex justify-center items-center px-[10%] md:px-[30%]'>
 			<div className='flex flex-col items-center border-2 border-gray-200 px-4 py-4 rounded-xl '>
@@ -28,7 +27,7 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 							value={formData?.fullName}
 							required
 						/>
-						{!!formData?.fullName?.length || <p className='text-red-500 w-full text-sm'>{errors.fullName}</p>}
+						{errors.fullName && <p className='text-red-500 w-full text-sm'>{errors.fullName}</p>}
 						<label
 							htmlFor='floating_name_surname'
 							className='peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>
@@ -38,7 +37,7 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 
 					<div className='relative z-0 w-full mb-6 group'>
 						<input
-							type='text'
+							type='tel'
 							name='floating_name_surname'
 							id='floating_name_surname'
 							className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2  focus:outline-none focus:ring-0  peer'
@@ -49,7 +48,7 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 							maxLength={12}
 							value={formData?.number}
 						/>
-						{formData?.number?.length > 11 || <p className='text-red-500 w-full text-sm'>{errors.number}</p>}
+						{errors.number && <p className='text-red-500 w-full text-sm'>{errors.number}</p>}
 						<label
 							htmlFor='floating_name_surname'
 							className='peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>
@@ -67,7 +66,7 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 							required
 							value={formData?.email}
 						/>
-						{!!formData?.email?.length || <p className='text-red-500 w-full text-sm'>{errors.email}</p>}
+						{errors.email && <p className='text-red-500 w-full text-sm'>{errors.email}</p>}
 						<label
 							htmlFor='floating_name_surname'
 							className='peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-gray-600  peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'>
@@ -84,7 +83,7 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 						Zaznaczenie zgody jest dobrowolne,ale konieczne do zapisu na wizytę przez internet. Zaznaczając ten przycisk
 						akceptujesz politykę prywatności, która jest dostępna na stronie rehabilitacja.waw.pl
 					</label>
-					{formData?.consent || <p className='text-red-500 w-full text-sm'>{errors.consent}</p>}
+					{errors.consent && <p className='text-red-500 w-full text-sm'>{errors.consent}</p>}
 				</form>
 				<div className='flex p-4'>
 					<button
