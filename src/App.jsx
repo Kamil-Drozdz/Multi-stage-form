@@ -24,7 +24,7 @@ const App = () => {
 		number: '',
 		email: '',
 	});
-	console.log(!errors.fullName && !errors.email && !errors.number && formData.consent);
+
 	const handleInputChange = e => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
