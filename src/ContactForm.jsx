@@ -83,7 +83,7 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 						Zaznaczenie zgody jest dobrowolne,ale konieczne do zapisu na wizytę przez internet. Zaznaczając ten przycisk
 						akceptujesz politykę prywatności, która jest dostępna na stronie rehabilitacja.waw.pl
 					</label>
-					{errors.consent && <p className='text-red-500 w-full text-sm'>{errors.consent}</p>}
+					{!formData.consent && <p className='text-red-500 w-full text-sm'>{errors.consent}</p>}
 				</form>
 				<div className='flex p-4'>
 					<button

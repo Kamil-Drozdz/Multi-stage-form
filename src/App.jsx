@@ -24,7 +24,7 @@ const App = () => {
 		number: '',
 		email: '',
 	});
-
+	console.log(!errors.fullName && !errors.email && !errors.number && formData.consent);
 	const handleInputChange = e => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
@@ -46,8 +46,8 @@ const App = () => {
 			setErrors(prevErrors => ({ ...prevErrors, email: '' }));
 		}
 
-		if (!formData.consent) {
-			setErrors(prevErrors => ({ ...prevErrors, consent: value ? '' : 'Zgoda musi zostać zaakceptowana' }));
+		if (formData.consent) {
+			setErrors(prevErrors => ({ ...prevErrors, consent: 'Zgoda musi zostać zaakceptowana' }));
 		}
 	};
 
@@ -105,7 +105,7 @@ const App = () => {
 	};
 	const nextPage = index => {
 		if (page === FormTitles.length - 1) {
-			if ((!errors.fullName, !errors.email, !errors.number, !!formData.consent)) {
+			if (!errors.fullName && !errors.email && !errors.number && formData.consent) {
 				setErrors({});
 			}
 			if (Object.keys(errors).length === 0) {
