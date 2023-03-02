@@ -19,10 +19,11 @@ const App = () => {
 	});
 
 	const [selectedDateIndex, setSelectedDateIndex] = useState(0);
+	//tutaj dodany jest string na wypadek gdyby ktoś zwalidował formularz uzywając w nextPage np !errors.fullName co sie równa true przed wpisaniem wartości do inputu
 	const [errors, setErrors] = useState({
-		fullName: '',
-		number: '',
-		email: '',
+		fullName: 'initialError',
+		number: 'initialError',
+		email: 'initialError',
 	});
 
 	const handleInputChange = e => {
@@ -53,15 +54,7 @@ const App = () => {
 
 	const PageDisplay = () => {
 		if (page === 0) {
-			return (
-				<MedicalFacilityForm
-					FormTitles={FormTitles}
-					handleInputChange={handleInputChange}
-					page={page}
-					prevPage={prevPage}
-					nextPage={nextPage}
-				/>
-			);
+			return <MedicalFacilityForm FormTitles={FormTitles} handleInputChange={handleInputChange} nextPage={nextPage} />;
 		} else if (page === 1) {
 			return (
 				<SpecialistForm
@@ -107,11 +100,15 @@ const App = () => {
 		if (page === FormTitles.length - 1) {
 			if (!errors.fullName && !errors.email && !errors.number && formData.consent) {
 				setErrors({});
+			} else {
+				setErrors(prevErrors => ({ ...prevErrors, info: 'Uzupełnij wszystkie pola' }));
+				return;
 			}
 			if (Object.keys(errors).length === 0) {
 				alert(
 					'Otrzymujemy obiekt, sprawdz konsolę deva godzina która jest wybrana została usunięta z tablicy (skopiowanej)'
 				);
+				// te zmienne usuwają slot z obiektu mockData
 				const dateSlots = AVAILABLE_DATES[selectedDateIndex].slots;
 				const removedSlot = dateSlots.splice(index, 1)[0];
 				AVAILABLE_DATES[selectedDateIndex].slots = dateSlots;

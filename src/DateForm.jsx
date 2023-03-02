@@ -55,7 +55,7 @@ const DateForm = ({
 					</button>
 					<h2 className=' flex text-xl font-bold w-[90%] justify-center'>Dostępne sesje</h2>
 				</div>
-				<div className='w-full flex mb-4 overflow-x-scroll  scrollbar'>
+				<div className='w-full flex mb-4 overflow-x-scroll  scrollbar select-none'>
 					{AVAILABLE_DATES.map((date, index) => (
 						<button
 							key={index}
@@ -64,7 +64,7 @@ const DateForm = ({
 							} ${!isDateActive(date.date) ? ' opacity-40' : ''}`}
 							onClick={() => handleDateChange(index)}>
 							<p className='text-[10px] font-bold text-gray-400'>Sob</p>
-							{date.date}
+							<p className='ml-1 w-5/6'>{date.date}</p>
 							<p className='text-green-500 text-[10px] whitespace-nowrap font-bold'>3 miejsca</p>
 						</button>
 					))}

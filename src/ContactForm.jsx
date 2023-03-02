@@ -5,7 +5,7 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 	return (
 		<div className='w-auto h-auto flex justify-center items-center px-[10%] md:px-[30%]'>
 			<div className='flex flex-col items-center border-2 border-gray-200 px-4 py-4 rounded-xl '>
-				<div className='flex w-full mb-6 flex-nowrap justify-start items-center'>
+				<div className='flex w-full mb-6 flex-nowrap justify-start items-center border-b-[1px] pb-6'>
 					<button
 						className='py-[4px] px-2 hover:bg-slate-300 rounded-full text-black mr-4 disabled:opacity-30'
 						onClick={() => {
@@ -13,7 +13,7 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 						}}>
 						<FontAwesomeIcon icon={faArrowLeft} />
 					</button>
-					<h2 className='text-xl border-b-[1px] w-full font-bold justify-center flex'>Dane kontaktowe</h2>
+					<h2 className='text-xl  w-full font-bold justify-center flex'>Dane kontaktowe</h2>
 				</div>
 				<form className='flex flex-col items-center justify-center w-auto'>
 					<div className='relative z-0 w-full mb-6 group'>
@@ -85,6 +85,7 @@ const ContactForm = ({ handleInputChange, nextPage, prevPage, formData, errors }
 					</label>
 					{!formData.consent && <p className='text-red-500 w-full text-sm'>{errors.consent}</p>}
 				</form>
+				{!formData.info && <p className='pt-4 text-red-500 w-full text-sm'>{errors.info}</p>}
 				<div className='flex p-4'>
 					<button
 						className='p-2 bg-gray-500 rounded-lg text-white '

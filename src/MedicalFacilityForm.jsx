@@ -1,7 +1,4 @@
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
-const MedicalFacilityForm = ({ handleInputChange, nextPage, prevPage, page }) => {
+const MedicalFacilityForm = ({ handleInputChange, nextPage }) => {
 	const medicalFacilities = [
 		{ id: 1, name: 'Przychodnia A' },
 		{ id: 2, name: 'Przychodnia B' },
@@ -9,17 +6,9 @@ const MedicalFacilityForm = ({ handleInputChange, nextPage, prevPage, page }) =>
 	];
 
 	return (
-		<div className='w-auto h-auto flex justify-center items-center px-[10%] md:px-[15%]'>
+		<div className='w-auto h-auto relative md:bottom-[120px] bottom-[60px] flex justify-center items-start px-[10%] md:px-[15%]'>
 			<div className='flex flex-col items-center border-2 border-gray-200 px-4 py-4 rounded-xl'>
-				<div className='flex w-full mb-6 flex-nowrap justify-start items-center'>
-					<button
-						className='p-2 rounded-full text-black mr-4 disabled:opacity-30'
-						disabled={page === 0}
-						onClick={() => {
-							prevPage();
-						}}>
-						<FontAwesomeIcon icon={faArrowLeft} />
-					</button>
+				<div className='flex w-full mb-6 flex-nowrap border-b-[1px] pb-6 justify-center'>
 					<h2 className=' text-lg font-bold align-self-center '>Wybierz placówkę medyczną</h2>
 				</div>
 
