@@ -21,35 +21,15 @@ const App = () => {
 	const [selectedDateIndex, setSelectedDateIndex] = useState(0);
 	//tutaj dodany jest string na wypadek gdyby ktoś zwalidował formularz uzywając w nextPage np !errors.fullName co sie równa true przed wpisaniem wartości do inputu
 	const [errors, setErrors] = useState({
-		fullName: 'initialError',
-		number: 'initialError',
-		email: 'initialError',
+		fullName: ' ',
+		number: ' ',
+		email: ' ',
 	});
 
 	const handleInputChange = e => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
-
-		if (name === 'fullName' && value.length < 4) {
-			setErrors({ ...errors, fullName: 'Uzupełnij imię i nazwisko' });
-		} else {
-			setErrors(prevErrors => ({ ...prevErrors, fullName: '' }));
-		}
-		if (name === 'number' && !/^(\+48)[1-9]\d{8}$/.test(value)) {
-			setErrors({ ...errors, number: 'Numer telefonu musi składać się z 9 cyfr' });
-		} else {
-			setErrors(prevErrors => ({ ...prevErrors, number: '' }));
-		}
-
-		if (name === 'email' && !/\S+@\S+\.\S+/.test(value)) {
-			setErrors({ ...errors, email: 'Niepoprawny adres e-mail' });
-		} else {
-			setErrors(prevErrors => ({ ...prevErrors, email: '' }));
-		}
-
-		if (formData.consent) {
-			setErrors(prevErrors => ({ ...prevErrors, consent: 'Zgoda musi zostać zaakceptowana' }));
-		}
+		setErrors({ ...errors, [name]: '' });
 	};
 
 	const PageDisplay = () => {
@@ -96,13 +76,34 @@ const App = () => {
 	const prevPage = () => {
 		setPage(currPage => currPage - 1);
 	};
-	const nextPage = index => {
+	const nextPage = (name, index) => {
 		if (page === FormTitles.length - 1) {
 			if (!errors.fullName && !errors.email && !errors.number && formData.consent) {
 				setErrors({});
-			} else {
-				setErrors(prevErrors => ({ ...prevErrors, info: 'Uzupełnij wszystkie pola' }));
-				return;
+			}
+			let newErrors = {};
+			if (formData.fullName.length < 4) {
+				newErrors.fullName = 'Uzupełnij imię i nazwisko';
+			}
+			if (!/^(\+48)[1-9]\d{8}$/.test(formData.number)) {
+				newErrors.number = 'Numer telefonu musi składać się z 9 cyfr';
+			}
+			if (!/\S+@\S+\.\S+/.test(formData.email)) {
+				newErrors.email = 'Niepoprawny adres e-mail';
+			}
+			if (!formData.consent) {
+				newErrors.consent = 'Zgoda musi zostać zaakceptowana';
+			}
+			setErrors(newErrors);
+
+			if (Object.keys(newErrors).length === 0) {
+				alert(
+					'Otrzymujemy obiekt, sprawdz konsolę deva godzina która jest wybrana została usunięta z tablicy (skopiowanej)'
+				);
+				const dateSlots = AVAILABLE_DATES[selectedDateIndex].slots;
+				const removedSlot = dateSlots.splice(index, 1)[0];
+				AVAILABLE_DATES[selectedDateIndex].slots = dateSlots;
+				console.log(formData);
 			}
 			if (Object.keys(errors).length === 0) {
 				alert(
