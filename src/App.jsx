@@ -96,15 +96,6 @@ const App = () => {
 			}
 			setErrors(newErrors);
 
-			if (Object.keys(newErrors).length === 0) {
-				alert(
-					'Otrzymujemy obiekt, sprawdz konsolę deva godzina która jest wybrana została usunięta z tablicy (skopiowanej)'
-				);
-				const dateSlots = AVAILABLE_DATES[selectedDateIndex].slots;
-				const removedSlot = dateSlots.splice(index, 1)[0];
-				AVAILABLE_DATES[selectedDateIndex].slots = dateSlots;
-				console.log(formData);
-			}
 			if (Object.keys(errors).length === 0) {
 				alert(
 					'Otrzymujemy obiekt, sprawdz konsolę deva godzina która jest wybrana została usunięta z tablicy (skopiowanej)'
