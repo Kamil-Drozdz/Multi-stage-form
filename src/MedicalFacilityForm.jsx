@@ -6,7 +6,7 @@ const MedicalFacilityForm = ({ handleInputChange, nextPage }) => {
 	];
 
 	return (
-		<div className='w-auto h-auto relative md:bottom-[120px] bottom-[60px] flex justify-center items-start px-[10%] md:px-[15%]'>
+		<div className='w-auto h-auto relative flex justify-center items-start px-[10%] md:px-[15%]'>
 			<div className='flex flex-col items-center border-2 border-gray-200 px-4 py-4 rounded-xl'>
 				<div className='flex w-full mb-6 flex-nowrap border-b-[1px] pb-6 justify-center'>
 					<h2 className=' text-lg font-bold align-self-center '>Wybierz placówkę medyczną</h2>

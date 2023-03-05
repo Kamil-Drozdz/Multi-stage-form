@@ -24,7 +24,7 @@ const SpecialistForm = ({ handleInputChange, nextPage, prevPage, formData }) => 
 	}, [formData?.medicalFacility]);
 
 	return (
-		<div className='w-auto max-w-[600px] pt-[20%] md:mt-0 h-full flex justify-center items-center px-[5%] md:px-[15%]'>
+		<div className='w-auto max-w-[600px] md:mt-0 h-full flex justify-center items-center px-[5%] md:px-[15%]'>
 			<div className='flex flex-col items-center border-2 border-gray-200 px-6 py-4 rounded-xl'>
 				<div className='flex w-full mb-6 flex-nowrap border-b-[1px] pb-6'>
 					<button

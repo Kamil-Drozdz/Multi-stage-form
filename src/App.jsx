@@ -112,7 +112,7 @@ const App = () => {
 	};
 
 	return (
-		<div className='w-auto h-auto flex items-center justify-center'>
+		<div className='w-auto h-auto mt-4 flex items-center justify-center'>
 			<div>{PageDisplay()}</div>
 		</div>
 	);
