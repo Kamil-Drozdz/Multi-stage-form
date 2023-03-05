@@ -22,7 +22,7 @@ export const specialists = [
 		name: 'Pioter Pietruszka',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
-		facilities: 'Przychodnia A',
+		facilities: 'Sulejówek',
 		image: doctor,
 	},
 	{
@@ -30,7 +30,7 @@ export const specialists = [
 		name: 'Pioter Arbuz',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
-		facilities: 'Przychodnia B',
+		facilities: 'Sulejówek',
 		image: doctor,
 	},
 	{
@@ -38,7 +38,7 @@ export const specialists = [
 		name: 'Pioter Marchewka',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
-		facilities: 'Przychodnia C',
+		facilities: 'Sulejówek',
 		image: doctor,
 	},
 	{
@@ -54,7 +54,7 @@ export const specialists = [
 		name: 'Wacław Chrząkała',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
-		facilities: 'Przychodnia C',
+		facilities: 'Sulejówek',
 		image: doctor,
 	},
 	{
@@ -62,7 +62,7 @@ export const specialists = [
 		name: 'Rysiek Pietruszka',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
-		facilities: 'Przychodnia B',
+		facilities: 'Warszawa',
 		image: doctor,
 	},
 	{
@@ -70,7 +70,7 @@ export const specialists = [
 		name: 'Wacław Chrząkała',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
-		facilities: 'Przychodnia C',
+		facilities: 'Warszawa',
 		image: doctor,
 	},
 	{
@@ -78,7 +78,7 @@ export const specialists = [
 		name: 'Rysiek Pietruszka',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
-		facilities: 'Przychodnia B',
+		facilities: 'Warszawa',
 		image: doctor,
 	},
 	{
@@ -86,7 +86,7 @@ export const specialists = [
 		name: 'Wacław Chrząkała',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
-		facilities: 'Przychodnia C',
+		facilities: 'Warszawa',
 		image: doctor,
 	},
 	{
@@ -94,7 +94,7 @@ export const specialists = [
 		name: 'Wacław Chrząkała',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
-		facilities: 'Przychodnia A',
+		facilities: 'Warszawa',
 		image: doctor,
 	},
 	{
@@ -102,7 +102,7 @@ export const specialists = [
 		name: 'Rysiek Pietruszka',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
-		facilities: 'Przychodnia A',
+		facilities: 'Warszawa',
 		image: doctor,
 	},
 	{
@@ -110,7 +110,7 @@ export const specialists = [
 		name: 'Wacław Chrząkała',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
-		facilities: 'Przychodnia A',
+		facilities: 'Warszawa-Wesoła',
 		image: doctor,
 	},
 	{
@@ -118,7 +118,7 @@ export const specialists = [
 		name: 'Rysiek Pietruszka',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
-		facilities: 'Przychodnia A',
+		facilities: 'Warszawa-Wesoła',
 		image: doctor,
 	},
 	{
@@ -126,7 +126,7 @@ export const specialists = [
 		name: 'Wacław Chrząkała',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
-		facilities: 'Przychodnia A',
+		facilities: 'Warszawa-Wesoła',
 		image: doctor,
 	},
 	{
@@ -134,7 +134,7 @@ export const specialists = [
 		name: 'Rysiek Pietruszka',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
-		facilities: 'Przychodnia A',
+		facilities: 'Warszawa-Wesoła',
 		image: doctor,
 	},
 	{
@@ -142,7 +142,7 @@ export const specialists = [
 		name: 'Wacław Chrząkała',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
-		facilities: 'Przychodnia A',
+		facilities: 'Warszawa-Wesoła',
 		image: doctor,
 	},
 ];

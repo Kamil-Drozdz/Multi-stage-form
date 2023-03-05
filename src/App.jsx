@@ -76,7 +76,7 @@ const App = () => {
 	const prevPage = () => {
 		setPage(currPage => currPage - 1);
 	};
-	const nextPage = (name, index) => {
+	const nextPage = index => {
 		if (page === FormTitles.length - 1) {
 			if (!errors.fullName && !errors.email && !errors.number && formData.consent) {
 				setErrors({});
