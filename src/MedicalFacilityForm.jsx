@@ -15,7 +15,7 @@ const MedicalFacilityForm = ({ handleInputChange, nextPage }) => {
 				</div>
 
 				<div className='flex flex-col w-[88%] justify-center'>
-					<div className='flex  md:flex-wrap w-full flex-wrap justify-start items-center'>
+					<div className='flex  md:flex-wrap w-full flex-wrap justify-center md:justify-start items-center'>
 						{medicalFacilities.map(facility => (
 							<div
 								key={facility.id}
