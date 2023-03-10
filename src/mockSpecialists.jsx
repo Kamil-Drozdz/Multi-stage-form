@@ -6,7 +6,7 @@ export const specialists = [
 		name: 'Pioter  Gruszkaaaa',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
-		facilities: 'Przychodnia A',
+		facilities: 'Ząbki',
 		image: doctor,
 	},
 	{
@@ -14,7 +14,7 @@ export const specialists = [
 		name: 'Pioter Pietruszewski',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
-		facilities: 'Przychodnia B',
+		facilities: 'Ząbki',
 		image: doctor,
 	},
 	{

@@ -1,28 +1,16 @@
 import { useState, useEffect } from 'react';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { specialists } from './mockSpecialists';
 
-const SpecialistForm = ({ handleInputChange, nextPage, prevPage, formData }) => {
-	const specialties = ['osteopatia', 'fizjoterapia'];
-
-	const [selectedSpecialty, setSelectedSpecialty] = useState(specialties[0]);
-	const [selectedFacility, setSelectedFacility] = useState(null);
-
-	const filteredSpecialists = specialists.filter(
-		specialist => specialist.speciality === selectedSpecialty && specialist.facilities === selectedFacility
-	);
-
-	useEffect(() => {
-		if (formData?.medicalFacility) {
-			setSelectedSpecialty(specialties[0]);
-			setSelectedFacility(formData.medicalFacility);
-		} else {
-			setSelectedSpecialty(specialties[0]);
-			setSelectedFacility(null);
-		}
-	}, [formData?.medicalFacility]);
-
+const SpecialistForm = ({
+	handleInputChange,
+	nextPage,
+	filteredSpecialists,
+	prevPage,
+	specialties,
+	setSelectedSpecialty,
+	selectedSpecialty,
+}) => {
 	return (
 		<div className='w-auto max-w-[600px] md:mt-0 h-full flex justify-center items-center px-[5%] md:px-[15%]'>
 			<div className='flex flex-col items-center border-2 border-gray-200 px-6 py-4 rounded-xl'>

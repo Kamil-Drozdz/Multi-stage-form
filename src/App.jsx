@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'tailwindcss/tailwind.css';
 import ContactForm from './ContactForm';
 import DateForm from './DateForm';
 import MedicalFacilityForm from './MedicalFacilityForm';
 import SpecialistForm from './SpecialistForm';
 import { AVAILABLE_DATES } from './mockData';
+import { specialists } from './mockSpecialists';
 
 const App = () => {
 	const FormTitles = ['Wybierz placówkę', 'Wybierz typ wizyty', 'Wybierz termin wizyty', 'Uzupełnij dane'];
@@ -26,15 +27,44 @@ const App = () => {
 		email: ' ',
 	});
 
+	const datesForFacility = AVAILABLE_DATES.filter(date => date.facility === formData.medicalFacility);
+
 	const handleInputChange = e => {
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
 		setErrors({ ...errors, [name]: '' });
 	};
+	const specialties = [...new Set(specialists.map(specialist => specialist.speciality))];
+
+	const [selectedSpecialty, setSelectedSpecialty] = useState(specialties[0]);
+	const [selectedFacility, setSelectedFacility] = useState(null);
+
+	useEffect(() => {
+		if (formData?.medicalFacility) {
+			setSelectedSpecialty(specialties[0]);
+			setSelectedFacility(formData.medicalFacility);
+		} else {
+			setSelectedSpecialty(specialties[0]);
+			setSelectedFacility(null);
+		}
+	}, [formData?.medicalFacility]);
+
+	const filteredSpecialists = specialists.filter(
+		specialist => specialist.speciality === selectedSpecialty && specialist.facilities === selectedFacility
+	);
 
 	const PageDisplay = () => {
 		if (page === 0) {
-			return <MedicalFacilityForm FormTitles={FormTitles} handleInputChange={handleInputChange} nextPage={nextPage} />;
+			return (
+				<MedicalFacilityForm
+					FormTitles={FormTitles}
+					handleInputChange={handleInputChange}
+					nextPage={nextPage}
+					AVAILABLE_DATES={AVAILABLE_DATES}
+					formData={formData}
+                    filteredSpecialists={filteredSpecialists}
+				/>
+			);
 		} else if (page === 1) {
 			return (
 				<SpecialistForm
@@ -44,6 +74,11 @@ const App = () => {
 					prevPage={prevPage}
 					nextPage={nextPage}
 					formData={formData}
+					specialists={specialists}
+					filteredSpecialists={filteredSpecialists}
+					specialties={specialties}
+					setSelectedSpecialty={setSelectedSpecialty}
+					selectedSpecialty={selectedSpecialty}
 				/>
 			);
 		} else if (page === 2) {
@@ -55,7 +90,7 @@ const App = () => {
 					prevPage={prevPage}
 					nextPage={nextPage}
 					formData={formData}
-					AVAILABLE_DATES={AVAILABLE_DATES}
+					datesForFacility={datesForFacility}
 					selectedDateIndex={selectedDateIndex}
 					setSelectedDateIndex={setSelectedDateIndex}
 				/>
@@ -101,9 +136,9 @@ const App = () => {
 					'Otrzymujemy obiekt, sprawdz konsolę deva godzina która jest wybrana została usunięta z tablicy (skopiowanej)'
 				);
 				// te zmienne usuwają slot z obiektu mockData
-				const dateSlots = AVAILABLE_DATES[selectedDateIndex].slots;
+				const dateSlots = datesForFacility[selectedDateIndex].slots;
 				const removedSlot = dateSlots.splice(index, 1)[0];
-				AVAILABLE_DATES[selectedDateIndex].slots = dateSlots;
+				datesForFacility[selectedDateIndex].slots = dateSlots;
 				console.log(formData);
 			}
 		} else {

@@ -7,40 +7,37 @@ const DateForm = ({
 	nextPage,
 	prevPage,
 	formData,
-	AVAILABLE_DATES,
+	datesForFacility,
 	selectedDateIndex,
 	setSelectedDateIndex,
 }) => {
 	const [selectedSlotIndex, setSelectedSlotIndex] = useState(0);
 
+	useEffect(() => {
+		if (formData.date !== undefined) {
+			const dateIndex = datesForFacility.findIndex(date => date.date === formData.date);
+			setSelectedDateIndex(dateIndex);
+		}
+	}, [formData.date, datesForFacility, setSelectedDateIndex]);
+
 	const handleDateChange = index => {
 		setSelectedDateIndex(index);
-		handleInputChange({ target: { name: 'date', value: AVAILABLE_DATES[index].date } });
+		handleInputChange({ target: { name: 'date', value: datesForFacility[index].date } });
 	};
 
 	const handleSlotChange = index => {
 		setSelectedSlotIndex(index);
-		handleInputChange({ target: { name: 'time', value: AVAILABLE_DATES[selectedDateIndex].slots[index] } });
+		handleInputChange({ target: { name: 'time', value: datesForFacility[selectedDateIndex].slots[index] } });
 	};
+
 	const isDateActive = date => {
-		const availableDate = AVAILABLE_DATES.find(d => d.date === date);
+		const availableDate = datesForFacility?.find(d => d.date === date);
 		return availableDate && availableDate.slots.length > 0;
 	};
 
 	const handleBooking = () => {
 		nextPage();
 	};
-	useEffect(() => {
-		if (formData.date !== undefined) {
-			const dateIndex = AVAILABLE_DATES.findIndex(date => date.date === formData.date);
-			setSelectedDateIndex(dateIndex);
-		}
-		if (formData.time !== undefined) {
-			const date = AVAILABLE_DATES[selectedDateIndex];
-			const slotIndex = date.slots.findIndex(slot => slot === formData.time);
-			setSelectedSlotIndex(slotIndex);
-		}
-	}, [formData.date, formData.time, setSelectedDateIndex, setSelectedSlotIndex]);
 
 	return (
 		<div className='h-auto w-screen  flex justify-center items-center px-[10%] md:px-[20%]'>
@@ -56,7 +53,7 @@ const DateForm = ({
 					<h2 className=' flex text-xl font-bold w-[90%] justify-center'>Dostępne sesje</h2>
 				</div>
 				<div className='w-full flex mb-4 overflow-x-scroll  scrollbar select-none'>
-					{AVAILABLE_DATES.map((date, index) => (
+					{datesForFacility?.map((date, index) => (
 						<button
 							key={index}
 							className={`w-full py-2 mb-2 px-2 basis-[18%] border mr-2 rounded font-bold ${
@@ -71,7 +68,7 @@ const DateForm = ({
 				</div>
 				<h2 className='text-lg mb-4 border-b-[1px] pb-4 w-full'>Dostępne sloty czasowe</h2>
 				<div className='flex mb-2 px-auto w-full flex-wrap'>
-					{AVAILABLE_DATES[selectedDateIndex].slots.map((slot, index) => (
+					{datesForFacility[selectedDateIndex]?.slots?.map((slot, index) => (
 						<button
 							key={index}
 							className={`py-2 border rounded font-bold basis-1/4 ${
@@ -81,15 +78,15 @@ const DateForm = ({
 							{slot}
 						</button>
 					))}
-					{!isDateActive(AVAILABLE_DATES[selectedDateIndex].date) && (
+					{!isDateActive(datesForFacility[selectedDateIndex]?.date) && (
 						<p className=' text-sm mb-2'> w tym dniu nie mamy dostępnych już miejsc</p>
 					)}
 				</div>
 				<button
 					className='py-2 px-4 bg-teal-800 text-white rounded w-full font-bold disabled:opacity-30'
-					disabled={!isDateActive(AVAILABLE_DATES[selectedDateIndex].date) || selectedSlotIndex === -1}
+					disabled={!isDateActive(datesForFacility[selectedDateIndex]?.date) || selectedSlotIndex === -1}
 					onClick={handleBooking}>
-					Zarezerwuj sesję dla {AVAILABLE_DATES[selectedDateIndex].date} 2023
+					Zarezerwuj sesję dla {datesForFacility[selectedDateIndex]?.date} 2023
 				</button>
 			</div>
 		</div>
