@@ -1,16 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SpecialistForm = ({
 	handleInputChange,
 	nextPage,
-	filteredSpecialists,
+	filteredSpecialistsByFacilityAndSpeciality,
 	prevPage,
+	formData,
 	specialties,
 	setSelectedSpecialty,
 	selectedSpecialty,
 }) => {
+	useEffect(() => {
+		if (formData.speciality) {
+			setSelectedSpecialty(formData.speciality);
+		}
+	}, []);
 	return (
 		<div className='w-auto max-w-[600px] md:mt-0 h-full flex justify-center items-center px-[5%] md:px-[15%]'>
 			<div className='flex flex-col items-center border-2 border-gray-200 px-6 py-4 rounded-xl'>
@@ -32,28 +38,29 @@ const SpecialistForm = ({
 							Specjalizacja:
 						</label>
 						<div className='flex flex-wrap w-full'>
-							{specialties.map(specialty => (
+							{specialties.map(speciality => (
 								<button
-									key={specialty}
-									value={specialty}
+									key={speciality}
+									value={speciality}
 									onClick={event => {
 										setSelectedSpecialty(event.target.value);
-										handleInputChange({ target: { name: 'specialty', value: event.target.value } });
 									}}
 									className={`hover:bg-slate-100 border-2 active:bg-slate-300 border-gray-300 rounded-md px-2 py-2 font-bold text-xl mr-2 mb-2 w-full basis-1/3 grow  ${
-										specialty === selectedSpecialty ? 'border-gray-700 border-2' : ''
+										speciality === selectedSpecialty ? 'border-gray-700 border-2' : ''
 									}`}
 									type='button'>
-									{specialty}
+									{speciality}
 								</button>
 							))}
 						</div>
 					</div>
 					<div className='flex w-full mb-2 flex-wrap justify-items-stretch mx-auto '>
-						{filteredSpecialists.map(specialist => (
+						{filteredSpecialistsByFacilityAndSpeciality.map(specialist => (
 							<div
 								key={specialist.id}
-								className='w-full basis-[45%]  mb-2 hover:border-slate-700 border-[1px] flex justify-center mr-2 md:mx-2 items-center text-xs md:text-sm bg-white rounded-md p-1 md:p-2 shadow-md cursor-pointer hover:shadow-lg'
+								className={` ${
+									specialist.name === formData.specialist ? ' border-black' : ''
+								} w-full basis-[45%]  mb-2 hover:border-slate-700 border-[1px] flex justify-center mr-2 md:mx-2 items-center text-xs md:text-sm bg-white rounded-md p-1 md:p-2 shadow-md cursor-pointer hover:shadow-lg`}
 								onClick={() => {
 									handleInputChange({ target: { name: 'specialist', value: specialist.name } });
 									nextPage();
@@ -67,7 +74,9 @@ const SpecialistForm = ({
 							</div>
 						))}
 					</div>
-					{!!filteredSpecialists.length || <p>Nie mamy aktualnie tego specialisty tej placówce</p>}
+					{!!filteredSpecialistsByFacilityAndSpeciality.length || (
+						<p>Nie mamy aktualnie tego specialisty tej placówce</p>
+					)}
 				</div>
 			</div>
 		</div>

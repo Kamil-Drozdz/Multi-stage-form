@@ -3,7 +3,7 @@ import doctor from './assets/doktor.jpg';
 export const specialists = [
 	{
 		id: 1,
-		name: 'Pioter  Gruszkaaaa',
+		name: 'Pioter  Gruszkaa',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
 		facilities: 'Ząbki',
@@ -59,7 +59,7 @@ export const specialists = [
 	},
 	{
 		id: 8,
-		name: 'Rysiek Pietruszka',
+		name: 'Rysiek Pietruszska',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
 		facilities: 'Warszawa',
@@ -67,7 +67,7 @@ export const specialists = [
 	},
 	{
 		id: 9,
-		name: 'Wacław Chrząkała',
+		name: 'Wacław Chrząkałwa',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
 		facilities: 'Warszawa',
@@ -75,7 +75,7 @@ export const specialists = [
 	},
 	{
 		id: 10,
-		name: 'Rysiek Pietruszka',
+		name: 'Rysiek Pietrusszka',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
 		facilities: 'Warszawa',
@@ -83,7 +83,7 @@ export const specialists = [
 	},
 	{
 		id: 11,
-		name: 'Wacław Chrząkała',
+		name: 'Wacław Chrzaąkała',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
 		facilities: 'Warszawa',
@@ -91,7 +91,7 @@ export const specialists = [
 	},
 	{
 		id: 12,
-		name: 'Wacław Chrząkała',
+		name: 'Wacław Charząkała',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
 		facilities: 'Warszawa',
@@ -99,7 +99,7 @@ export const specialists = [
 	},
 	{
 		id: 13,
-		name: 'Rysiek Pietruszka',
+		name: 'Rysiek Pietaeruszka',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
 		facilities: 'Warszawa',
@@ -107,7 +107,7 @@ export const specialists = [
 	},
 	{
 		id: 14,
-		name: 'Wacław Chrząkała',
+		name: 'Wacław Cherząkała',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
 		facilities: 'Warszawa-Wesoła',
@@ -115,7 +115,7 @@ export const specialists = [
 	},
 	{
 		id: 15,
-		name: 'Rysiek Pietruszka',
+		name: 'Rysiek Pieeetruszka',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
 		facilities: 'Warszawa-Wesoła',
@@ -123,23 +123,7 @@ export const specialists = [
 	},
 	{
 		id: 16,
-		name: 'Wacław Chrząkała',
-		title: 'fizjoterapeuta',
-		speciality: 'fizjoterapia',
-		facilities: 'Warszawa-Wesoła',
-		image: doctor,
-	},
-	{
-		id: 17,
-		name: 'Rysiek Pietruszka',
-		title: 'fizjoterapeuta',
-		speciality: 'osteopatia',
-		facilities: 'Warszawa-Wesoła',
-		image: doctor,
-	},
-	{
-		id: 15,
-		name: 'Wacław Chrząkała',
+		name: 'Wacław Chrząeekała',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
 		facilities: 'Warszawa-Wesoła',

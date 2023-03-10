@@ -15,7 +15,7 @@ const App = () => {
 		number: '+48',
 		email: '',
 		specialist: '',
-		specialty: '',
+		speciality: '',
 		consent: false,
 	});
 
@@ -29,11 +29,18 @@ const App = () => {
 
 	const datesForFacility = AVAILABLE_DATES.filter(date => date.facility === formData.medicalFacility);
 
+	//dosyć problematyczny plottwist jednakże niezbędny jeżeli chcemy ustawić specialistę wraz z specializacją która przekieruje odrazu na następny fomularz wyboru,  nie mozna w onClicku ustawić dwóch kluczy - nadpisują sie
 	const handleInputChange = e => {
 		const { name, value } = e.target;
-		setFormData({ ...formData, [name]: value });
+		if (name === 'specialist') {
+			const selectedSpecialist = specialists.find(specialist => specialist.name === value);
+			setFormData({ ...formData, [name]: value, speciality: selectedSpecialist?.speciality || '' });
+		} else {
+			setFormData({ ...formData, [name]: value });
+		}
 		setErrors({ ...errors, [name]: '' });
 	};
+
 	const specialties = [...new Set(specialists.map(specialist => specialist.speciality))];
 
 	const [selectedSpecialty, setSelectedSpecialty] = useState(specialties[0]);
@@ -49,7 +56,8 @@ const App = () => {
 		}
 	}, [formData?.medicalFacility]);
 
-	const filteredSpecialists = specialists.filter(
+	const filteredSpecialistsByFacility = specialists.filter(specialist => specialist.facilities === selectedFacility);
+	const filteredSpecialistsByFacilityAndSpeciality = specialists.filter(
 		specialist => specialist.speciality === selectedSpecialty && specialist.facilities === selectedFacility
 	);
 
@@ -62,7 +70,7 @@ const App = () => {
 					nextPage={nextPage}
 					AVAILABLE_DATES={AVAILABLE_DATES}
 					formData={formData}
-                    filteredSpecialists={filteredSpecialists}
+					filteredSpecialistsByFacility={filteredSpecialistsByFacility}
 				/>
 			);
 		} else if (page === 1) {
@@ -75,7 +83,7 @@ const App = () => {
 					nextPage={nextPage}
 					formData={formData}
 					specialists={specialists}
-					filteredSpecialists={filteredSpecialists}
+					filteredSpecialistsByFacilityAndSpeciality={filteredSpecialistsByFacilityAndSpeciality}
 					specialties={specialties}
 					setSelectedSpecialty={setSelectedSpecialty}
 					selectedSpecialty={selectedSpecialty}
