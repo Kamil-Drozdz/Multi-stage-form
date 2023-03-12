@@ -6,6 +6,7 @@ const MedicalFacilityForm = ({
 	formData,
 	filteredSpecialistsByFacility,
 }) => {
+	const [error, setError] = useState('');
 	const medicalFacilities = [
 		{ id: 1, name: 'Warszawa-Wesoła', address: 'Niemcewicza 9' },
 		{ id: 2, name: 'Sulejówek', address: 'Niemcewicza 20' },
@@ -17,6 +18,7 @@ const MedicalFacilityForm = ({
 	useEffect(() => {
 		const firstDate = AVAILABLE_DATES.find(date => date.facility === formData.medicalFacility)?.date;
 		setFirstAvailableDate(firstDate);
+		setError('');
 	}, [formData.medicalFacility]);
 
 	return (
@@ -30,9 +32,9 @@ const MedicalFacilityForm = ({
 						{medicalFacilities.map(facility => (
 							<div
 								key={facility.id}
-								className={`bg-white box-content   min-w-[150px] mr-4 mb-2 rounded-md p-4 shadow-md cursor-pointer hover:shadow-lg ${
-									facility.name === formData.medicalFacility ? ' border-black' : ''
-								} hover:border-slate-700 border-2`}
+								className={`bg-white box-content min-w-[150px] mr-4 mb-2 rounded-md p-4 shadow-md cursor-pointer hover:shadow-lg ${
+									facility.name === formData.medicalFacility ? ' border-black border-[1px]' : ''
+								} hover:border-slate-700 border-[1px]`}
 								onClick={() => {
 									handleInputChange({ target: { name: 'medicalFacility', value: facility.name } });
 								}}>
@@ -44,6 +46,7 @@ const MedicalFacilityForm = ({
 						))}
 					</div>
 				</div>
+				{error && <p className='text-red-500 text-sm py-4'>{error}</p>}
 				{formData.medicalFacility && (
 					<>
 						<p className='my-4 text-center md:text-sm text-xs '>
@@ -77,8 +80,14 @@ const MedicalFacilityForm = ({
 					</>
 				)}
 				<button
-					className='p-2 bg-gray-200 rounded-lg mt-2 whitespace-nowrap hover:border-black border-2'
+					className={`p-2 bg-gray-200 rounded-lg mt-2 whitespace-nowrap shadow-sm ${
+						formData.medicalFacility ? '' : ' opacity-60'
+					}  hover:border-black border-[1px]`}
 					onClick={() => {
+						if (!formData.medicalFacility) {
+							setError('Musisz wybrać placówkę');
+							return;
+						}
 						nextPage();
 					}}>
 					Zarezerwuj wizytę
