@@ -49,8 +49,8 @@ const MedicalFacilityForm = ({
 				{error && <p className='text-red-500 text-sm py-4'>{error}</p>}
 				{formData.medicalFacility && (
 					<>
-						<p className='my-4 text-center md:text-sm text-xs '>
-							Pierwsza dostępna data dla placówki {formData.medicalFacility}: {firstAvailableDate} u specialisty:
+						<p className='my-4 text-center md:text-sm text-xs w-full'>
+							Pierwsza dostępny termin placówki {formData.medicalFacility}: {firstAvailableDate} u specialisty:
 						</p>
 						<div className='flex w-full  mb-2 flex-wrap justify-items-stretch mx-auto '>
 							{filteredSpecialistsByFacility.map(specialist => (
@@ -67,9 +67,7 @@ const MedicalFacilityForm = ({
 									<div className='flex flex-col max-w-[75px] items-center'>
 										<img className='md:max-w-full object-cover ' src={specialist.image} />
 										<div className='w-full flex-col flex jusify-center text-xs font-bold'>
-											<p>
-												{specialist.name} {specialist.surname}
-											</p>
+											<p className='w-16'> {specialist.name}</p>
 											<p className='font-light'>{specialist.speciality}</p>
 										</div>
 									</div>
