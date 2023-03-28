@@ -65,7 +65,7 @@ const SpecialistForm = ({
 									handleInputChange({ target: { name: 'specialist', value: specialist.name } });
 									nextPage();
 								}}>
-								<div className='w-1/2 flex flex-col w-full items-center'>
+								<div className='w-1/2 flex flex-col  items-center'>
 									<img className='max-w-[100px] object-cover ' src={specialist.image} />
 									<p className=' flex jusify-center text-xs md:text-lg font-bold px-2 '>{specialist.name}</p>
 								</div>

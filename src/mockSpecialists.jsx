@@ -3,7 +3,7 @@ import doctor from './assets/doktor.jpg';
 export const specialists = [
 	{
 		id: 1,
-		name: 'Pioter  Gruszkaa',
+		name: 'Adam Nowak',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
 		facilities: 'Ząbki',
@@ -11,7 +11,7 @@ export const specialists = [
 	},
 	{
 		id: 2,
-		name: 'Pioter Pietruszewski',
+		name: 'Tomasz Kowalski',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
 		facilities: 'Ząbki',
@@ -19,7 +19,7 @@ export const specialists = [
 	},
 	{
 		id: 3,
-		name: 'Pioter Pietruszka',
+		name: 'Anna Szymańska',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
 		facilities: 'Sulejówek',
@@ -27,7 +27,7 @@ export const specialists = [
 	},
 	{
 		id: 4,
-		name: 'Pioter Arbuz',
+		name: 'Karolina Wójcik',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
 		facilities: 'Sulejówek',
@@ -35,7 +35,7 @@ export const specialists = [
 	},
 	{
 		id: 5,
-		name: 'Pioter Marchewka',
+		name: 'Ewa Kaczmarek',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
 		facilities: 'Sulejówek',
@@ -43,7 +43,7 @@ export const specialists = [
 	},
 	{
 		id: 6,
-		name: 'Rysiek Pietruszka',
+		name: 'Robert Nowicki',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
 		facilities: 'Przychodnia B',
@@ -51,7 +51,7 @@ export const specialists = [
 	},
 	{
 		id: 7,
-		name: 'Wacław Chrząkała',
+		name: 'Katarzyna Krawczyk',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
 		facilities: 'Sulejówek',
@@ -59,7 +59,7 @@ export const specialists = [
 	},
 	{
 		id: 8,
-		name: 'Rysiek Pietruszska',
+		name: 'Marek Jasiński',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
 		facilities: 'Warszawa',
@@ -67,7 +67,7 @@ export const specialists = [
 	},
 	{
 		id: 9,
-		name: 'Wacław Chrząkałwa',
+		name: 'Joanna Kowalczyk',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
 		facilities: 'Warszawa',
@@ -75,7 +75,7 @@ export const specialists = [
 	},
 	{
 		id: 10,
-		name: 'Rysiek Pietrusszka',
+		name: 'Łukasz Szymczak',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
 		facilities: 'Warszawa',
@@ -83,7 +83,7 @@ export const specialists = [
 	},
 	{
 		id: 11,
-		name: 'Wacław Chrzaąkała',
+		name: 'Magdalena Nowakowska',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
 		facilities: 'Warszawa',
@@ -91,7 +91,7 @@ export const specialists = [
 	},
 	{
 		id: 12,
-		name: 'Wacław Charząkała',
+		name: 'Marta Kubiak',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
 		facilities: 'Warszawa',
@@ -99,7 +99,7 @@ export const specialists = [
 	},
 	{
 		id: 13,
-		name: 'Rysiek Pietaeruszka',
+		name: 'Michał Kowalewski',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
 		facilities: 'Warszawa',
@@ -107,7 +107,7 @@ export const specialists = [
 	},
 	{
 		id: 14,
-		name: 'Wacław Cherząkała',
+		name: 'Aleksandra Woźniak',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
 		facilities: 'Warszawa-Wesoła',
@@ -115,7 +115,7 @@ export const specialists = [
 	},
 	{
 		id: 15,
-		name: 'Rysiek Pieeetruszka',
+		name: 'Janusz Pawłowski',
 		title: 'fizjoterapeuta',
 		speciality: 'osteopatia',
 		facilities: 'Warszawa-Wesoła',
@@ -123,7 +123,7 @@ export const specialists = [
 	},
 	{
 		id: 16,
-		name: 'Wacław Chrząeekała',
+		name: 'Monika Lisowska',
 		title: 'fizjoterapeuta',
 		speciality: 'fizjoterapia',
 		facilities: 'Warszawa-Wesoła',

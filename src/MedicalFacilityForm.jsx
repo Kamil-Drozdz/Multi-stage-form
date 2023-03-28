@@ -58,7 +58,7 @@ const MedicalFacilityForm = ({
 									key={specialist.id}
 									className={` ${
 										specialist.name === formData.specialist ? ' border-black' : ''
-									} w-full basis-[45%] max-w-[100px]  mb-2 hover:border-slate-700 border-[1px] flex justify-center mr-2 md:mx-2 items-center text-xs md:text-sm bg-white rounded-md p-1 md:p-2 shadow-md cursor-pointer hover:shadow-lg`}
+									} w-full overflow-hidden basis-[45%] max-w-[100px]  mb-2 hover:border-slate-700 border-[1px] flex justify-center mr-2 md:mx-2 items-center text-xs md:text-sm bg-white rounded-md p-1 md:p-2 shadow-md cursor-pointer hover:shadow-lg`}
 									onClick={() => {
 										handleInputChange({
 											target: { name: 'specialist', value: specialist.name },
